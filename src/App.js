@@ -7,9 +7,6 @@ import  About from "./components/About.js";
 import ProductList from "./components/ProductList.js";
 import ProductDetails from "./components/ProductDetails.js";
 
-// import img3 from './Imgs/g1.jpg';
-// import img4 from './Imgs/g2.jpg';
-// import img5 from './Imgs/g3.jpg';
 import img6 from './Imgs/slider-homepage3-img1.webp';
 import img7 from './Imgs/slider-homepage3-img2.webp';
 import img8 from './Imgs/slider_01_2e4b77f0-6708-4280-aef2-b558c8e9d233.webp';
