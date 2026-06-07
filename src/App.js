@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes, BrowserRouter } from "react-router";
+import { Route, Routes } from "react-router";
 import Navbar from "./components/Navbar.js";
 import Slider from "./components/Slider.js";
 import  Main  from "./components/Main.js";
@@ -21,12 +21,11 @@ function App() {
       <Routes>
         <Route path="/" element={
           <><Slider Imgs={mainImgs}/>
-          <Main />
-          <ProductList />
-          </>
+            <Main />
+            <ProductList /></>
         } />
         <Route path="/About" element={<About />} />
-        <Route path="/ProductDetails/:APInum/:ProductId" element={<ProductDetails />}/>
+        <Route path="/ProductDetails/:ProductId" element={<ProductDetails />}/>
       </Routes>
     </div>
   );

@@ -1,6 +1,3 @@
-// 
-// mport img1 from '../Imgs/ecommerce.jpg'
-// import img2 from '../Imgs/ecommerce_1.webp'
 import './product.css'
 
 function Slider({Imgs,styleImg}) {

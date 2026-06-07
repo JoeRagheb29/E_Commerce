@@ -5,24 +5,32 @@ import RecursiveDisplay from "./RecursiveDisplay.js";
 
 function ProductDetails() {
   let params = useParams();
-  // params = the variables in the path of route who product details in product component
-  let API_Product_URL = `${
-    params.APInum === "1" ? "https://dummyjson.com" : "https://fakestoreapi.com"
-  }/products/${params.ProductId}`;
+  // console.log("productID params: ", params.ProductId);
+
+  let API_Product_URL = `https://dummyjson.com/products/${params.ProductId}`;
+
   let [myProduct, setMyProduct] = useState({});
 
   useEffect(() => {
-    fetch(API_Product_URL)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        let bol = params.APInum === "1" ? true : false;
-        setMyProduct({ ...data, isFromAPI1: bol });
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  console.log(myProduct);
+    async function getProductDetails() {
+      const res = await fetch(API_Product_URL);
+      const data = await res.json();
+      
+      if(!res.ok) {
+        throw new Error(`Error fetching product details: ${res.status} ${res.statusText}`);
+      }
+      
+      setMyProduct({ ...data});
+    }
+
+    getProductDetails();
+
+  }, [API_Product_URL, params.ProductId]);
+
+
+  if(myProduct === null || Object.keys(myProduct).length === 0) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Product myObj={myProduct} showButton={false}>
