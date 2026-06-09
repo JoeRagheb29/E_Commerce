@@ -23,6 +23,7 @@
     font-weight: 600;
     color: var(--dark);
     margin-bottom: var(--spacing-md);
+    line-height: 1.4;
 }
 
 .card-text {
@@ -36,7 +37,226 @@
     margin-bottom: var(--spacing-md);
 }
 
-/* Product Card Hover Effect */
+/* ============================================
+   PRODUCT IMAGE SECTION
+   ============================================ */
+.product-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background-color: var(--lighter-gray);
+}
+
+.product-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--card-transition-duration) ease;
+}
+
+.hoover:hover .product-image-wrapper img {
+    transform: scale(1.08);
+}
+
+/* ============================================
+   BADGES (Discount & Stock)
+   ============================================ */
+.discount-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: linear-gradient(135deg, var(--danger), #ff8787);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.85rem;
+    z-index: 10;
+    box-shadow: var(--shadow-md);
+    animation: slideInLeft 0.3s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.stock-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background-color: var(--success);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.8rem;
+    z-index: 10;
+    box-shadow: var(--shadow-md);
+}
+
+.stock-badge.low-stock {
+    background: linear-gradient(135deg, var(--warning), #ffb74d);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: var(--shadow-md);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(243, 156, 18, 0.5);
+    }
+}
+
+/* ============================================
+   WISHLIST BUTTON
+   ============================================ */
+.wishlist-btn-card {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    z-index: 15;
+    transition: all var(--duration-base) var(--easing-smooth);
+    box-shadow: var(--shadow-md);
+}
+
+.wishlist-btn-card:hover {
+    transform: scale(1.1);
+    background-color: white;
+    border-color: var(--danger);
+}
+
+.wishlist-btn-card.wishlisted {
+    background-color: rgba(255, 107, 107, 0.1);
+    border-color: var(--danger);
+    animation: heartBeat 0.4s ease-out;
+}
+
+@keyframes heartBeat {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ============================================
+   RATING SECTION
+   ============================================ */
+.rating-section {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.stars-container {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.star {
+    font-size: 0.9rem;
+    transition: all var(--duration-fast) ease;
+}
+
+.rating-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.rating-text strong {
+    color: var(--warning);
+    font-weight: 700;
+}
+
+/* ============================================
+   PRICE SECTION
+   ============================================ */
+.price-section {
+    margin: var(--spacing-md) 0;
+    padding: var(--spacing-md) 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.price-display {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.price-original {
+    font-size: 1rem;
+    text-decoration: line-through;
+    color: var(--gray);
+    font-weight: 500;
+}
+
+/* ============================================
+   BUTTON STYLING
+   ============================================ */
+.btn-primary-custom {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all var(--duration-base) var(--easing-smooth);
+    cursor: pointer;
+    margin-top: auto;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary-custom:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-primary-custom:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   PRODUCT CARD HOVER EFFECT
+   ============================================ */
 .hoover {
     position: relative;
     overflow: hidden;
@@ -53,6 +273,7 @@
     background: rgba(255, 255, 255, 0.1);
     transition: left var(--card-transition-duration) ease;
     z-index: 0;
+    pointer-events: none;
 }
 
 .hoover:hover {
@@ -64,31 +285,7 @@
     left: 100%;
 }
 
-/* Product Image Container */
-.product-image-container {
-    width: 100%;
-    height: 250px;
-    background-color: var(--lighter-gray);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: var(--spacing-md);
-}
-
-.product-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--card-transition-duration) ease;
-}
-
-.hoover:hover .product-image-container img {
-    transform: scale(1.05);
-}
-
-/* Product Shadow on Hover */
+/* Product Details Page Styling */
 .productShadow {
     border-radius: var(--radius-xl);
     transition: all var(--card-transition-duration) var(--easing-smooth);
@@ -99,7 +296,6 @@
     transform: translateY(-5px);
 }
 
-/* Text Styling in Product Details */
 .top-50c {
     top: 40vh;
     text-transform: uppercase;
@@ -111,7 +307,7 @@
     text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Product Details Layout */
+/* Product Details Container */
 .product-details-container {
     display: flex;
     flex-direction: column;
@@ -133,39 +329,35 @@
     flex: 1;
 }
 
-/* Rating Stars */
-.stars {
-    color: var(--warning);
-    font-size: 0.9rem;
-    margin-bottom: var(--spacing-md);
-}
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .discount-badge,
+    .stock-badge {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+    }
 
-.stars span {
-    margin-right: var(--spacing-xs);
-}
+    .wishlist-btn-card {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
 
-/* Price Display */
-.price-display {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: var(--spacing-md);
-}
+    .stars-container {
+        gap: 0.15rem;
+    }
 
-.price-original {
-    text-decoration: line-through;
-    color: var(--gray);
-    font-size: 1rem;
-    margin-right: var(--spacing-md);
-}
+    .star {
+        font-size: 0.75rem;
+    }
 
-.discount-badge {
-    display: inline-block;
-    background-color: var(--danger);
-    color: white;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border-radius: var(--radius-full);
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-left: var(--spacing-sm);
+    .price-display {
+        font-size: 1.25rem;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
 }
