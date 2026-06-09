@@ -1,46 +1,171 @@
 :root {
-    /* --bg-violetLight: #b9b8fa; */
-    --bg-violetLight: #D1F8EF;
     --card-transition-duration: 0.3s;
 }
 
-.violetLight {
-    background-color: var(--bg-violetLight);
-    /* transition: background-color var(--card-transition-duration) ease; */
+/* Modern Card Styling */
+.card {
+    border: none !important;
+    border-radius: var(--radius-xl) !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: all var(--card-transition-duration) var(--easing-smooth);
+    background: var(--white);
 }
 
-.violet {
-    background-color: rgb(55, 0, 218);
-    /* transition: background-color var(--card-transition-duration) ease; */
+.card:hover {
+    box-shadow: var(--shadow-lg) !important;
 }
 
-.h-600 {
-    height: 600px !important ;
+.card-body {
+    padding: var(--spacing-lg) !important;
+}
+
+.card-title {
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: var(--spacing-md);
 }
 
 .card-text {
-    font-size: 16px;
-    line-height: 24px;
-    color: #333;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
     overflow: hidden;
-    max-height: 100px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Product Card Hover Effect */
+.hoover {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.hoover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: left var(--card-transition-duration) ease;
+    z-index: 0;
 }
 
 .hoover:hover {
-    /* transition: scale(1.1) 0.3s; */
-    transform: scale(1.035);
-    transition:  0.2s ease-in-out;
+    transform: translateY(-8px);
+    transition: all var(--card-transition-duration) var(--easing-smooth);
+}
+
+.hoover:hover::before {
+    left: 100%;
+}
+
+/* Product Image Container */
+.product-image-container {
+    width: 100%;
+    height: 250px;
+    background-color: var(--lighter-gray);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--card-transition-duration) ease;
+}
+
+.hoover:hover .product-image-container img {
+    transform: scale(1.05);
+}
+
+/* Product Shadow on Hover */
+.productShadow {
+    border-radius: var(--radius-xl);
+    transition: all var(--card-transition-duration) var(--easing-smooth);
 }
 
 .productShadow:hover {
-    box-shadow: 7px 7px 7px 7px rgba(0, 30, 255, 0.594);
-    transition: box-shadow var(--card-transition-duration) ease;
+    box-shadow: 0 15px 40px rgba(55, 0, 218, 0.15);
+    transform: translateY(-5px);
 }
 
+/* Text Styling in Product Details */
 .top-50c {
     top: 40vh;
     text-transform: uppercase;
-    font-size: 50px;
-    font-weight: 300;
-    max-width: 50%;
+    font-size: 3rem;
+    font-weight: 700;
+    max-width: 60%;
+    line-height: 1.2;
+    color: white;
+    text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Product Details Layout */
+.product-details-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+@media (min-width: 992px) {
+    .product-details-container {
+        flex-direction: row;
+        gap: var(--spacing-2xl);
+    }
+}
+
+.product-image-gallery {
+    flex: 1;
+}
+
+.product-info {
+    flex: 1;
+}
+
+/* Rating Stars */
+.stars {
+    color: var(--warning);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.stars span {
+    margin-right: var(--spacing-xs);
+}
+
+/* Price Display */
+.price-display {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.price-original {
+    text-decoration: line-through;
+    color: var(--gray);
+    font-size: 1rem;
+    margin-right: var(--spacing-md);
+}
+
+.discount-badge {
+    display: inline-block;
+    background-color: var(--danger);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-left: var(--spacing-sm);
 }

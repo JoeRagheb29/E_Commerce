@@ -19,12 +19,10 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={
-          <>
-            <Slider Imgs={mainImgs}/>
-            <Main />
-            <ProductList />
-          </>
-        }/>
+          <><Slider Imgs={mainImgs}/>
+          <Main />
+          <ProductList /></>
+        } />
         <Route path="/About" element={<About />} />
         <Route path="/ProductDetails/:ProductId" element={<ProductDetails />}/>
       </Routes>
