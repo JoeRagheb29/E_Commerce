@@ -13,17 +13,18 @@ import img8 from './Imgs/slider_01_2e4b77f0-6708-4280-aef2-b558c8e9d233.webp';
 function App() {
 
   let mainImgs = [img6, img7, img8];
-  // new page == new route (بأختصار كده)
 
   return (
     <div className="App bg-light ">
       <Navbar />
       <Routes>
         <Route path="/" element={
-          <><Slider Imgs={mainImgs}/>
+          <>
+            <Slider Imgs={mainImgs}/>
             <Main />
-            <ProductList /></>
-        } />
+            <ProductList />
+          </>
+        }/>
         <Route path="/About" element={<About />} />
         <Route path="/ProductDetails/:ProductId" element={<ProductDetails />}/>
       </Routes>

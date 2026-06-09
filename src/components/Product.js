@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import './product.css';
-import Slider from "./Slider";
+// import Slider from "./Slider";
 
 
 function Product({myObj,showButton,children}) {  
